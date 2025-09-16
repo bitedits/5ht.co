@@ -1,0 +1,132 @@
+% Copyright (c) 2015 Synrc Research Center
+
+\usepackage[top=18mm, bottom=25.4mm,
+            inner=15mm,outer=18mm,
+            paperwidth=142mm, paperheight=200mm]{geometry}
+
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{tablefootnote}
+\usepackage{tocloft}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{babel}
+  \usepackage{polyglossia}
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+\else
+  \usepackage[T1,T2A]{fontenc}
+  \usepackage[utf8]{inputenc}
+\fi
+
+\begin{hyphenrules}
+\hyphenation{russian}{не-до-бро-де-тель-ным}      %аб-со-лю-т-но-го Ста-дии за-ро-ж-де-ни-я}
+\end{hyphenrules}
+
+\XeTeXinterchartokenstate 1
+\XeTeXinterchartoks 0 0 = {\-}
+\language=1
+\lefthyphenmin=2
+\righthyphenmin=2
+\hyphenpenalty=4000
+\tolerance=1000
+
+\newfontfamily\cyrillicfont{Geometria}
+\newfontfamily\tibetanfont{DDC Uchen}
+
+% include image
+
+\newcommand{\includeimage}[2]
+{\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{#1}
+\caption{#2}
+\end{figure}
+}
+
+% cover PDF book
+
+\newcommand{\ru}{\setdefaultlanguage{russian}\setmainlanguage{russian}\setmainfont{Geometria}}
+\newcommand{\ti}{\setdefaultlanguage{tibetan}\setmainlanguage{tibetan}\setmainfont{DDC Uchen}}
+
+\setdefaultlanguage{russian}
+\setmainlanguage{russian}
+\setmainfont{Geometria}
+
+\newcommand*{\titleAKANISHTA}
+{
+%        \begingroup
+        \thispagestyle{empty}
+        \hspace*{0.15\textwidth}
+        \rule{1pt}{\textheight}
+        \hspace*{0.05\textwidth}
+        \parbox[c][][s]{0.75\textwidth}
+        {
+             \vspace{-15cm}
+             \textsc{\noindent
+             \setdefaultlanguage{tibetan}
+             \newtoggle{tibetan@scriptlangequal}
+             \Large ༄༅།  །ཀློང་ཆེན་སྙིང་གི་ཐིག་ལེ་ལས་\\[0.05\baselineskip]
+                           བསྐྱེད་རིམ་ལྷ་ཁྲིད་འོག་མིན་བགྲོད་པའི་ཐེམ་སྐས་།\\
+             }
+             \\
+             \textsc{\noindent
+             \setdefaultlanguage{russian}
+             \setmainlanguage{russian}
+             \setmainfont{Geometria}
+             \newtoggle{russian@scriptlangequal}
+             \\
+             Джигме Лингпа и Патрул Ринпоче \\ [0.3\baselineskip]
+             \\
+             \Large
+             Сердечная сущность\\[0.3\baselineskip]
+             обширного пространства\\[0.3\baselineskip]
+             Великого Завершения.\\[0.3\baselineskip]
+             Лестница в Акаништху:\\[0.3\baselineskip]
+             наставления по Кьерим }
+        }
+%    \endgroup
+}
+
+% define images store
+
+\graphicspath{{./images/}}
+
+% indents
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+% start each section from new page
+
+%\let\stdsection\section
+%\renewcommand\section{\newpage\stdsection}
+
+% define style for code listings
+
+
+\newtoggle{russian@scriptlangequal}
+\newtoggle{tibetan@scriptlangequal}
+
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  skipabove=\topsep,
+  skipbelow=\topsep,
+  leftmargin=-10pt,
+  rightmargin=-10pt,
+  innertopmargin=0pt,
+  footnoteinside=false,
+  innerrightmargin=0pt,
+  innerleftmargin=20pt
+]{siderules}
+
+\makeatletter
+\AfterEndEnvironment{mdframed}{
+ \tfn@tablefootnoteprintout
+ \gdef\tfn@fnt{0}
+}
+\makeatother
+
