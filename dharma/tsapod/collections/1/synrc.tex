@@ -1,0 +1,119 @@
+% Copyright (c) 2015 Synrc Research Center
+
+%\usepackage{afterpage}
+\usepackage[english,russian]{babel}
+%\usepackage{graphicx}
+%\usepackage{tocloft}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{hyphenat}
+\usepackage{import}
+
+%\usepackage{caption}
+%\usepackage[usenames,dvipsnames]{color}
+\usepackage[top=18mm, bottom=22.4mm,
+            inner=15mm,outer=18mm,
+            paperwidth=142mm, paperheight=200mm]{geometry}
+
+\hyphenation{бес-чувстве-нен cуще-ствования
+ буду-щем разно-образии Дхар-му наско-лько счастли-вого ниж-них
+ сохрани-лось всеведую-щие свер-нуть неза-висимости}
+
+\fontencoding{T1}
+
+%\setlength{\cftsubsecnumwidth}{2.5em}
+%\defaultfontfeatures{Ligatures=TeX}
+
+% include image for HeVeA and LaTeX
+
+%\makeatletter
+%\def\@seccntformat#1{\llap{\csname the#1\endcsname\hskip0.7em\relax}}
+%\makeatother
+
+\newcommand{\includeimage}[2]
+{\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{#1}
+\caption{#2}
+\end{figure}
+}
+
+\newcommand*{\titlePRAYER}
+{
+\newfontfamily{\cyrillicfont}{Geometria}
+\setdefaultlanguage{tibetan}
+\setmainfont{Geometria}
+    \begingroup
+        \thispagestyle{empty}
+        \hspace*{0.15\textwidth}
+        \rule{1pt}{\textheight}
+        \hspace*{0.05\textwidth}
+        {
+        \parbox[c][][s]{0.75\textwidth}
+        {
+             \noindent
+             \vspace{-12cm}
+             \textsc{
+             \setdefaultlanguage{russian}
+             \setmainfont{Geometria}
+             \Large
+             Сборник Практик\\ [0.3\baselineskip]
+             Лонгчен Ньингтик\\ [0.3\baselineskip]
+             \\
+             \vspace*{3cm}
+             \\
+             \normalsize
+             Устье, 2015}
+        }}
+    \endgroup
+    \setdefaultlanguage{russian}
+    \setmainfont{Geometria}
+}
+
+
+
+% define images store
+
+\graphicspath{{./images/}}
+
+% start each section from new page
+
+%\let\stdsection\section
+%\renewcommand\section{\newpage\stdsection}
+
+% define style for code listings
+
+\lefthyphenmin=1
+\hyphenpenalty=100
+\tolerance=3000
+
+%\newcommand\blankpage{
+%    \null
+%    \thispagestyle{empty}
+%    \newpage}
+
+\newcommand{\Vspace}[1]{\vspace{#1}}
+\newcommand{\Section}[1]{\section{#1}}
+\newcommand{\SectionNo}[1]{\section*{#1}}
+\newcommand{\SubSection}[1]{\subsection{#1}}
+\newcommand{\SubSectionNo}[1]{\subsection*{#1}}
+\newcommand{\SubSubSection}[1]{\subsubsection{#1}}
+\newcommand{\SubSubSectionNo}[1]{\subsubsection*{#1}}
+
+\newcommand{\ru}{
+    \setdefaultlanguage{russian}
+    \setmainfont{Geometria}
+}
+
+\newcommand{\ti}{
+    \setdefaultlanguage{tibetan}
+    \setmainfont{DDC Uchen}
+}
+
+\newtoggle{russian@scriptlangequal}
+\newtoggle{tibetan@scriptlangequal}
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
